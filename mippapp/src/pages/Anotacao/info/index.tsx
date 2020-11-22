@@ -15,8 +15,11 @@ import {
   BackButton,
   HeaderText,
   Row,
+  Col,
+  ColText,
   RowText,
   RowTitle,
+  RowTable,
 } from './styles';
 
 interface Praga {
@@ -73,15 +76,13 @@ const InfoAnotacoes: React.FC = () => {
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       enabled>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{flex: 1}}>
-        <Header>
-          <BackButton onPress={() => navigation.goBack()}>
-            <Icon name="arrow-left" size={24} color="black" />
-          </BackButton>
-          <HeaderText>Anotação de Campo</HeaderText>
-        </Header>
+      <Header>
+        <BackButton onPress={() => navigation.goBack()}>
+          <Icon name="arrow-left" size={24} color="black" />
+        </BackButton>
+        <HeaderText>Anotação de Campo</HeaderText>
+      </Header>
+      <ScrollView keyboardShouldPersistTaps="handled">
         <Container>
           {anotacao && (
             <>
@@ -106,26 +107,71 @@ const InfoAnotacoes: React.FC = () => {
                 <RowText>{anotacao.desfolha}</RowText>
               </Row>
               <RowTitle>Informar Dados FLutuação das Pragas</RowTitle>
+              <RowTable>
+                <Col>
+                  <ColText>Insetos Praga</ColText>
+                </Col>
+                <Col>
+                  <ColText>Tamanho</ColText>
+                </Col>
+                <Col>
+                  <ColText>Média Encontrada</ColText>
+                </Col>
+              </RowTable>
               {anotacao.pragas.map((praga, index) => (
-                <Row key={index}>
-                  <RowText>{praga.nome}</RowText>
-                  <RowText>{praga.tamanho}</RowText>
-                  <RowText>{praga.mediaEncontrada}</RowText>
-                </Row>
+                <RowTable key={index}>
+                  <Col>
+                    <ColText>{praga.nome}</ColText>
+                  </Col>
+
+                  <Col>
+                    <ColText>{praga.tamanho}</ColText>
+                  </Col>
+
+                  <Col>
+                    <ColText>{praga.mediaEncontrada}</ColText>
+                  </Col>
+                </RowTable>
               ))}
               <RowTitle>Informar Dados Doenças das Pragas</RowTitle>
+              <RowTable>
+                <Col>
+                  <ColText>Doença Praga</ColText>
+                </Col>
+                <Col>
+                  <ColText>Média Encontrada</ColText>
+                </Col>
+              </RowTable>
               {anotacao.doencas.map((doenca, index) => (
-                <Row key={index}>
-                  <RowText>{doenca.nome}</RowText>
-                  <RowText>{doenca.mediaEncontrada}</RowText>
-                </Row>
+                <RowTable key={index}>
+                  <Col>
+                    <ColText>{doenca.nome}</ColText>
+                  </Col>
+
+                  <Col>
+                    <ColText>{doenca.mediaEncontrada}</ColText>
+                  </Col>
+                </RowTable>
               ))}
               <RowTitle>Informar Dados de Inimigos Naturais</RowTitle>
+              <RowTable>
+                <Col>
+                  <ColText>Inimigos Naturais</ColText>
+                </Col>
+                <Col>
+                  <ColText>Média Encontrada</ColText>
+                </Col>
+              </RowTable>
               {anotacao.inimigos.map((inimigo, index) => (
-                <Row key={index}>
-                  <RowText>{inimigo.nome}</RowText>
-                  <RowText>{inimigo.mediaEncontrada}</RowText>
-                </Row>
+                <RowTable key={index}>
+                  <Col>
+                    <ColText>{inimigo.nome}</ColText>
+                  </Col>
+
+                  <Col>
+                    <ColText>{inimigo.mediaEncontrada}</ColText>
+                  </Col>
+                </RowTable>
               ))}
               <Row>
                 <RowText>Última alteração:</RowText>

@@ -11,7 +11,7 @@ export const ForgotPassword = styled.TouchableOpacity`
 export const ForgotPasswordText = styled.Text`
   color: #f4ede8;
   font-size: 16px;
-  font-family: 'RobotoSlab-Regular'
+  font-family: 'RobotoSlab-Regular';
 `;
 
 export const CreatePragas = styled.TouchableOpacity`
@@ -41,7 +41,6 @@ export const BackButton = styled.TouchableOpacity`
 `;
 
 export const Header = styled.View`
-
   min-height: 56px;
   border-bottom-width: 2px;
   border-color: rgba(0, 0, 0, 0.2);
@@ -75,7 +74,6 @@ export const RowText = styled.Text`
   color: #454545;
   font-size: 16px;
   font-family: 'RobotoSlab-Regular';
-
 `;
 
 export const RowTitle = styled.Text`
@@ -85,4 +83,27 @@ export const RowTitle = styled.Text`
   padding: 8px 16px;
   border-bottom-width: 2px;
   border-color: rgba(0, 0, 0, 0.2);
+`;
+
+export const RowTable = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-bottom-width: 2px;
+  border-color: rgba(0, 0, 0, 0.2);
+`;
+
+export const Col = styled.View`
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding: 4px;
+`;
+
+export const ColText = styled.Text`
+  color: #000;
+  font-size: 16px;
+  padding: 4px;
 `;

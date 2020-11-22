@@ -26,6 +26,9 @@ import {
   OpenDatePickerButtonText,
   PickerContainer,
   PickerContainerText,
+  Row,
+  Col,
+  ColText,
 } from './styles';
 
 interface Praga {
@@ -251,35 +254,80 @@ const AlterAnotacoes: React.FC = () => {
               % de Desfolha (em números inteiros)
             </Input>
             <RowTitle>Informar Dados Flutuação das Pragas</RowTitle>
+            <Row>
+              <Col>
+                <ColText>Insetos Praga</ColText>
+              </Col>
+              <Col>
+                <ColText>Tamanho</ColText>
+              </Col>
+              <Col>
+                <ColText>Média Encontrada</ColText>
+              </Col>
+            </Row>
             {anotacao?.pragas.map((praga, index) => (
-              <Input
-                key={`praga[${index}].id`}
-                name={`pragas[${index}].mediaEncontrada`}
-                keyboardType="numeric"
-                returnKeyType="next">
-                {praga.nome}
-              </Input>
+              <Row key={`praga[${index}].id`}>
+                <Col>
+                  <ColText>{praga.nome}</ColText>
+                </Col>
+                <Col>
+                  <ColText>{praga.tamanho}</ColText>
+                </Col>
+                <Col>
+                  <Input
+                    name={`pragas[${index}].mediaEncontrada`}
+                    keyboardType="numeric"
+                    returnKeyType="next"
+                  />
+                </Col>
+              </Row>
             ))}
 
             <RowTitle>Informar Dados Doenças das Pragas</RowTitle>
+            <Row>
+              <Col>
+                <ColText>Doença Praga</ColText>
+              </Col>
+              <Col>
+                <ColText>Média Encontrada</ColText>
+              </Col>
+            </Row>
             {anotacao?.doencas.map((doenca, index) => (
-              <Input
-                key={`doenca[${index}].id`}
-                name={`doencas[${index}].mediaEncontrada`}
-                keyboardType="numeric"
-                returnKeyType="next">
-                {doenca.nome}
-              </Input>
+              <Row key={`doenca[${index}].id`}>
+                <Col>
+                  <ColText>{doenca.nome}</ColText>
+                </Col>
+                <Col>
+                  <Input
+                    name={`doencas[${index}].mediaEncontrada`}
+                    keyboardType="numeric"
+                    returnKeyType="next"
+                  />
+                </Col>
+              </Row>
             ))}
             <RowTitle>Informar Dados de Inimigos Naturais</RowTitle>
+            <Row>
+              <Col>
+                <ColText>Inimigos Naturais</ColText>
+              </Col>
+              <Col>
+                <ColText>Média Encontrada</ColText>
+              </Col>
+            </Row>
             {anotacao?.inimigos.map((inimigo, index) => (
-              <Input
-                key={`inimigo[${index}].id`}
-                name={`inimigos[${index}].mediaEncontrada`}
-                keyboardType="numeric"
-                returnKeyType="next">
-                {inimigo.nome}
-              </Input>
+              <Row key={`inimigo[${index}].id`}>
+                <Col>
+                  <ColText>{inimigo.nome}</ColText>
+                </Col>
+                <Col>
+                  <Input
+                    name={`inimigos[${index}].mediaEncontrada`}
+                    keyboardType="numeric"
+                    returnKeyType="next"
+                  />
+                </Col>
+              </Row>
             ))}
 
             <Button

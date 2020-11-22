@@ -92,3 +92,24 @@ export const PickerContainerText = styled.Text`
   margin-right: 8px;
   max-width: 66%;
 `;
+
+export const Row = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-bottom-width: 2px;
+  border-color: rgba(0, 0, 0, 0.2);
+`;
+
+export const Col = styled.View`
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+`;
+
+export const ColText = styled.Text`
+  color: #000;
+  font-size: 16px;
+`;

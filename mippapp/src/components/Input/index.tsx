@@ -15,7 +15,7 @@ import {Container, TextInput, TextLabeL} from './styles';
 interface InputProps extends TextInputProps {
   name: string;
   containerStyle?: object;
-  children: string;
+  children?: string;
 }
 
 interface InputValueReference {

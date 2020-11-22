@@ -81,22 +81,23 @@ const AlterDoencas: React.FC = () => {
               Nome:
             </Input>
             <Button
-              style={{backgroundColor: '#428cff'}}
-              onPress={() => {
-                formRef.current?.submitForm();
-                formRef.current?.setFieldValue('nome', '');
-              }}>
-              SALVAR
-            </Button>
-
-            <Button
               style={{backgroundColor: '#ff4961'}}
               onPress={() => {
+                formRef.current?.setFieldValue('nomeCientifico', '');
                 formRef.current?.setFieldValue('nome', '');
 
                 cancel();
               }}>
               CANCELAR
+            </Button>
+            <Button
+              style={{backgroundColor: '#428cff'}}
+              onPress={() => {
+                formRef.current?.submitForm();
+                formRef.current?.setFieldValue('nomeCientifico', '');
+                formRef.current?.setFieldValue('nome', '');
+              }}>
+              SALVAR
             </Button>
           </Form>
         </Container>

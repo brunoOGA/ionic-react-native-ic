@@ -101,7 +101,10 @@ const AlterPragas: React.FC = () => {
               }}>
               Nome:
             </Input>
-            <Input ref={nomeCientificoInputRef} name="nomeCientifico">
+            <Input
+              ref={nomeCientificoInputRef}
+              name="nomeCientifico"
+              returnKeyType="done">
               Nome Científico:
             </Input>
             <PickerContainer>
@@ -127,15 +130,6 @@ const AlterPragas: React.FC = () => {
               </Picker>
             </PickerContainer>
             <Button
-              style={{backgroundColor: '#428cff'}}
-              onPress={() => {
-                formRef.current?.submitForm();
-                formRef.current?.setFieldValue('nomeCientifico', '');
-                formRef.current?.setFieldValue('nome', '');
-              }}>
-              SALVAR
-            </Button>
-            <Button
               style={{backgroundColor: '#ff4961'}}
               onPress={() => {
                 formRef.current?.setFieldValue('nomeCientifico', '');
@@ -144,6 +138,15 @@ const AlterPragas: React.FC = () => {
                 cancel();
               }}>
               CANCELAR
+            </Button>
+            <Button
+              style={{backgroundColor: '#428cff'}}
+              onPress={() => {
+                formRef.current?.submitForm();
+                formRef.current?.setFieldValue('nomeCientifico', '');
+                formRef.current?.setFieldValue('nome', '');
+              }}>
+              SALVAR
             </Button>
           </Form>
         </Container>

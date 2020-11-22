@@ -28,6 +28,7 @@ export const TextInput = styled.TextInput`
   color: #000;
   font-size: 16px;
   font-family: 'RobotoSlab-Regular';
+  width: 100%;
 `;
 
 export const TextLabeL = styled.Text`

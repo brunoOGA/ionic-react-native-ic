@@ -1,12 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useCallback, useRef, useState} from 'react';
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  Platform,
-  TextInput,
-} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, Platform} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Form} from '@unform/mobile';
 import {FormHandles} from '@unform/core';
@@ -30,6 +25,9 @@ import {
   OpenDatePickerButtonText,
   PickerContainer,
   PickerContainerText,
+  Row,
+  Col,
+  ColText,
 } from './styles';
 
 interface Praga {
@@ -62,7 +60,6 @@ interface Anotacao {
 
 const NewAnotacaoes: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const nomeCientificoInputRef = useRef<TextInput>(null);
 
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [dataDaColeta, setSelectedDate] = useState(new Date());
@@ -212,8 +209,7 @@ const NewAnotacaoes: React.FC = () => {
               <Picker
                 selectedValue={estadioDaCultura}
                 style={{height: 50, width: 100}}
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                onValueChange={(itemValue, itemIndex) =>
+                onValueChange={(itemValue) =>
                   setEstadioDaCultura(itemValue.toString())
                 }>
                 <Picker.Item label="Pré-emergência" value="Pré-emergência" />
@@ -234,57 +230,84 @@ const NewAnotacaoes: React.FC = () => {
               % de Desfolha (em números inteiros)
             </Input>
             <RowTitle>Informar Dados FLutuação das Pragas</RowTitle>
+            <Row>
+              <Col>
+                <ColText>Insetos Praga</ColText>
+              </Col>
+              <Col>
+                <ColText>Tamanho</ColText>
+              </Col>
+              <Col>
+                <ColText>Média Encontrada</ColText>
+              </Col>
+            </Row>
             {pragas.map((praga, index) => (
-              <Input
-                key={praga.id}
-                name={`pragas[${index}].mediaEncontrada`}
-                keyboardType="numeric"
-                returnKeyType="next"
-                defaultValue="0"
-                onSubmitEditing={() => {
-                  nomeCientificoInputRef.current?.focus();
-                }}>
-                {praga.nome}
-              </Input>
+              <Row key={praga.id}>
+                <Col>
+                  <ColText>{praga.nome}</ColText>
+                </Col>
+                <Col>
+                  <ColText>{praga.tamanho}</ColText>
+                </Col>
+
+                <Col>
+                  <Input
+                    name={`pragas[${index}].mediaEncontrada`}
+                    keyboardType="numeric"
+                    returnKeyType="next"
+                    defaultValue="0"
+                  />
+                </Col>
+              </Row>
             ))}
             <RowTitle>Informar Dados Doenças das Pragas</RowTitle>
+            <Row>
+              <Col>
+                <ColText>Doença Praga</ColText>
+              </Col>
+              <Col>
+                <ColText>Média Encontrada</ColText>
+              </Col>
+            </Row>
             {doencas.map((doenca, index) => (
-              <Input
-                key={doenca.id}
-                name={`doencas[${index}].mediaEncontrada`}
-                keyboardType="numeric"
-                returnKeyType="next"
-                defaultValue="0"
-                onSubmitEditing={() => {
-                  nomeCientificoInputRef.current?.focus();
-                }}>
-                {doenca.nome}
-              </Input>
+              <Row key={doenca.id}>
+                <Col>
+                  <ColText>{doenca.nome}</ColText>
+                </Col>
+                <Col>
+                  <Input
+                    name={`doencas[${index}].mediaEncontrada`}
+                    keyboardType="numeric"
+                    returnKeyType="next"
+                    defaultValue="0"
+                  />
+                </Col>
+              </Row>
             ))}
             <RowTitle>Informar Dados de Inimigos Naturais</RowTitle>
+            <Row>
+              <Col>
+                <ColText>Inimigos Naturais</ColText>
+              </Col>
+              <Col>
+                <ColText>Média Encontrada</ColText>
+              </Col>
+            </Row>
             {inimigos.map((inimigo, index) => (
-              <Input
-                key={inimigo.id}
-                name={`inimigos[${index}].mediaEncontrada`}
-                keyboardType="numeric"
-                returnKeyType="next"
-                defaultValue="0"
-                onSubmitEditing={() => {
-                  nomeCientificoInputRef.current?.focus();
-                }}>
-                {inimigo.nome}
-              </Input>
+              <Row key={inimigo.id}>
+                <Col>
+                  <ColText>{inimigo.nome}</ColText>
+                </Col>
+                <Col>
+                  <Input
+                    name={`inimigos[${index}].mediaEncontrada`}
+                    keyboardType="numeric"
+                    returnKeyType="next"
+                    defaultValue="0"
+                  />
+                </Col>
+              </Row>
             ))}
-
-            <Button
-              style={{backgroundColor: '#428cff'}}
-              onPress={() => {
-                formRef.current?.submitForm();
-                formRef.current?.setFieldValue('nomeCientifico', '');
-                formRef.current?.setFieldValue('nome', '');
-              }}>
-              SALVAR
-            </Button>
 
             <Button
               style={{backgroundColor: '#ff4961'}}
@@ -295,6 +318,15 @@ const NewAnotacaoes: React.FC = () => {
                 cancel();
               }}>
               CANCELAR
+            </Button>
+            <Button
+              style={{backgroundColor: '#428cff'}}
+              onPress={() => {
+                formRef.current?.submitForm();
+                formRef.current?.setFieldValue('nomeCientifico', '');
+                formRef.current?.setFieldValue('nome', '');
+              }}>
+              SALVAR
             </Button>
           </Form>
         </Container>
